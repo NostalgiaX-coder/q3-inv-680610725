@@ -4,13 +4,15 @@ import { type InventoryItem } from "../types/datatypes";
 
 interface ItemState {
   inventory: InventoryItem[];
+
   addInventoryItem: (
     name: string,
     quantity: number,
     price: number,
     category: InventoryItem["category"],
   ) => void;
-  // deleteInventoryItem: (id: string) => void;
+
+  deleteInventoryItem: (id: string) => void;
 }
 
 export const useItemStore = create<ItemState>()(
@@ -67,6 +69,7 @@ export const useItemStore = create<ItemState>()(
           date: "2026-10-04",
         },
       ],
+
       addInventoryItem: (name, quantity, price, category) =>
         set((state) => ({
           inventory: [
@@ -82,9 +85,12 @@ export const useItemStore = create<ItemState>()(
           ],
         })),
 
+      deleteInventoryItem: (id) =>
+        set((state) => ({
+          inventory: state.inventory.filter((item) => item.id !== id),
+        })),
     }),
     {
-      // Unique key name for the localStorage entry
       name: "app-storage",
     },
   ),
