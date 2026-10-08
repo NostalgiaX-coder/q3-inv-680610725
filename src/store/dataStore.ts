@@ -18,7 +18,6 @@ interface ItemState {
 export const useItemStore = create<ItemState>()(
   persist(
     (set) => ({
-      // ใช้ข้อมูลเริ่มต้นเมื่อยังไม่มีข้อมูลบันทึกใน LocalStorage
       inventory: [
         {
           id: "1",
