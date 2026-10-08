@@ -38,12 +38,24 @@ export function CategoryCards() {
         );
 
         return (
-          // Use Card component to display values by category
-          <div>
-            {category.label} - ฿{categoryValue.toFixed(2)} - {categoryUnits}{" "}
-            units
-          </div>
-        );
+          <Card key={category.id}>
+            <CardHeader>
+              {iconMap[String(category.value)]}
+              <CardTitle className="text-sm font-medium">
+              {category.label}
+            </CardTitle>
+            </CardHeader>
+
+          <CardContent>
+            <div className="text-xl font-bold">
+              ฿{categoryValue.toFixed(2)}
+            </div>
+          <p className="text-xs text-muted-foreground">
+            {categoryUnits} units
+          </p>
+        </CardContent>
+      </Card>
+);
       })}
     </div>
   );
