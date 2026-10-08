@@ -18,7 +18,6 @@ interface ItemState {
 export const useItemStore = create<ItemState>()(
   persist(
     (set) => ({
-      // Default initial items used only if localStorage is completely empty
       inventory: [
         {
           id: "1",
